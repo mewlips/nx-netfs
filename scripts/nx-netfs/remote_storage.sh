@@ -16,11 +16,10 @@ if [[ $1 = "start" ]]; then
     mount /dev/mmcblk1p1 $JAILED_ROOT/sdcard
     run_mount
     run_jail smbnetfs /mnt/smb
-    run_jail unionfs "/mnt/smb/$computer/$remote_sdcard"=RW:/sdcard=RW /mnt/sdcard
     for dir in $photo_dirs; do
-        mkdir -p $JAILED_ROOT/mnt/sdcard/DCIM/$dir
+        mkdir -p $JAILED_ROOT/mnt/smb/$computer/$remote_sdcard/DCIM/$dir
     done
-    mkdir -p /opt/storage/sdcard/
+    run_jail unionfs "/mnt/smb/$computer/$remote_sdcard"=RW:/sdcard=RW /mnt/sdcard
     check_mount $JAILED_ROOT/mnt/sdcard /opt/storage/sdcard
 elif [[ $1 = "stop" ]]; then
     umount /opt/storage/sdcard

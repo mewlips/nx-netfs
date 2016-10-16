@@ -25,10 +25,10 @@ run_mount() {
 }
 
 run_umount() {
-    check_umount $JAILED_ROOT/opt/usr
+#    check_umount $JAILED_ROOT/opt/usr
     check_umount $JAILED_ROOT/sys
     check_umount $JAILED_ROOT/proc
-    check_umount $JAILED_ROOT/sdcard
+#    check_umount $JAILED_ROOT/sdcard
     check_umount $JAILED_ROOT/dev/pts
     check_umount $JAILED_ROOT/dev
 }
